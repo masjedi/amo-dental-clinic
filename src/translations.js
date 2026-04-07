@@ -55,7 +55,7 @@ export const translations = {
       bookConsultation: "Book a Consultation",
       exploreServices: "Explore Services",
       featuredCare: "Featured Care",
-      dentalExperience: "Amoo Dental Experience",
+      dentalExperience: "Sharifi Dental Experience",
       dentalExperienceText:
         "Elegant care, modern methods, and patient-centered treatment designed for healthy and confident smiles.",
       liveCarousel: "Live carousel",
@@ -84,7 +84,7 @@ export const translations = {
     },
 
     logo: {
-      title: "Amoo",
+      title: "Sharifi",
       subtitle: "Dental Clinic",
     },
 
@@ -93,7 +93,7 @@ export const translations = {
         image: labImage,
         title: "Professional dental care with comfort and precision",
         subtitle:
-          "Amoo Dental Clinic in Kunduz provides modern restorative, cosmetic, and family dental treatments in a clean and welcoming environment.",
+          "Sharifi Dental Clinic in Kunduz provides modern restorative, cosmetic, and family dental treatments in a clean and welcoming environment.",
       },
       {
         image: chairImage,
@@ -286,7 +286,7 @@ export const translations = {
     ],
 
     cardInfo: {
-      clinicName: "Amoo Dental Clinic",
+      clinicName: "Sharifi Dental Clinic",
       doctorName: "Dr. Mohammadullah Sharifi",
       doctorAltName: "Sharifi Aqtash",
       whatsapp: "+93 744547411",
@@ -307,10 +307,10 @@ export const translations = {
     sections: {
       heroBadge: "Professional Dental Care in Kunduz",
 
-      aboutBadge: "About Amoo",
+      aboutBadge: "About Sharifi",
       aboutTitle: "Modern dentistry rooted in trust, hygiene, and comfort",
       aboutDescription:
-        "Amoo Dental Clinic in Kunduz is led by Dr. Mohammadullah Sharifi and focuses on quality dental treatment, patient comfort, and dependable care using modern techniques.",
+        "Sharifi Dental Clinic in Kunduz is led by Dr. Mohammadullah Sharifi and focuses on quality dental treatment, patient comfort, and dependable care using modern techniques.",
       leadDentistText:
         "Dedicated to helping patients improve oral health, restore smile aesthetics, and receive dependable dental solutions in a calm, welcoming setting.",
 
@@ -322,12 +322,12 @@ export const translations = {
         "Precision-led dental care with modern techniques, cleaner finishes, and a calm patient experience.",
 
       contactBadge: "Contact",
-      contactTitle: "Visit or contact Amoo Dental Clinic",
+      contactTitle: "Visit or contact Sharifi Dental Clinic",
       contactDescription:
         "The clinic card details have been used here so you can later fine-tune the exact map pin or update the email address if needed.",
 
       footerText:
-        "A professional and trustworthy dental clinic website for Amoo in Kunduz, with room to expand into appointments, bilingual content, and testimonials.",
+        "Sharifi Dental Clinic, led by Dr. Mohammadullah Sharifi, proudly offers exceptional, patient-focused dental care in Kunduz, Afghanistan, with a commitment to modern treatment, comfort, and confident smiles.",
     },
   },
 
@@ -357,7 +357,7 @@ export const translations = {
       bookConsultation: "وقت مشاوره",
       exploreServices: "مشاهده خدمات",
       featuredCare: "خدمات ویژه",
-      dentalExperience: "تجربه کلینیک دندان آمو",
+      dentalExperience: "تجربه کلینیک دندان شریفي",
       dentalExperienceText:
         "مراقبت حرفه‌ای، روش‌های مدرن و تداوي مریض محور برای لبخند سالم و با اعتمادبه‌نفس.",
       liveCarousel: "نمایش زنده",
@@ -385,7 +385,7 @@ export const translations = {
     },
 
     logo: {
-      title: "امو",
+      title: "شریفي",
       subtitle: "کلینیک دندان",
     },
 
@@ -394,7 +394,7 @@ export const translations = {
         image: labImage,
         title: "مراقبت حرفه‌ای دندان با راحتی و دقت",
         subtitle:
-          "کلینیک دندان امو در کندز خدمات مدرن ترمیم، زیبایی و خانوادگی تداوي دندان را در محیط پاک و مسلکي ارائه میکند.",
+          "کلینیک دندان شریفي در کندز خدمات مدرن ترمیم، زیبایی و خانوادگی تداوي دندان را در محیط پاک و مسلکي ارائه میکند.",
       },
       {
         image: chairImage,
@@ -543,7 +543,7 @@ export const translations = {
     ],
 
     cardInfo: {
-      clinicName: "کلینیک دندان امو",
+      clinicName: "کلینیک دندان شریفي",
       doctorName: "داکتر محمدالله شریفی ",
       doctorAltName: "شریفی ",
       whatsapp: "0744547411",
@@ -563,7 +563,7 @@ export const translations = {
     sections: {
       heroBadge: "مراقبت حرفه‌ای دندان در کندز",
 
-      aboutBadge: "درباره امو",
+      aboutBadge: "درباره شریفي",
       aboutTitle: "تداوي مدرن دندان بر اساس اعتماد، صحت و راحتی",
       aboutDescription:
         "کلینیک دندان آمو در کندز تحت مدیریت داکتر محمدالله شریفی فعالیت میکند، و بر تداوي باکیفیت، راحتی مریض، و مراقبت قابل اعتماد با استفاده از روش‌ های مدرن تمرکز دارد.",
@@ -578,7 +578,7 @@ export const translations = {
         "مراقبت دندان‌ پزشکی مبتنی بر دقت با تکنیک‌ های مدرن، نتیجه پاک‌تر و تجربه‌ای آرام برای بیمار.",
 
       contactBadge: "تماس",
-      contactTitle: "به کلینیک دندان آمو مراجعه کنید یا تماس بگیرید",
+      contactTitle: "به کلینیک دندان شریفي مراجعه کنید یا تماس بگیرید",
       contactDescription:
         "جزئیات کارت کلینیک در این بخش استفاده شده تا بعداً بتوانید موقعیت دقیق نقشه یا آدرس ایمیل را در صورت نیاز به‌روزرسانی کنید.",
 
@@ -613,7 +613,7 @@ export const translations = {
       bookConsultation: "د مشوري وخت وټاکي",
       exploreServices: "خد متو نه وګورئ",
       featuredCare: "ځانګړې پاملرنه",
-      dentalExperience: "د امو د غاښونو کلینیک تجربه",
+      dentalExperience: "د شريفي د غاښونو کلینیک تجربه",
       dentalExperienceText:
         "مسلکي پاملرنه، عصري لارې او د ناروغ پر بنسټ درملنه. د سالم او ډاډمني موسکا لپاره.",
       liveCarousel: "ژوندۍ ننداره",
@@ -641,7 +641,7 @@ export const translations = {
     },
 
     logo: {
-      title: "آمو",
+      title: "شريفي",
       subtitle: "د غاښونو کلینیک",
     },
 
@@ -650,13 +650,13 @@ export const translations = {
         image: labImage,
         title: "د ارامۍ او دقت سره مسلکي د غاښونو پاملرنه",
         subtitle:
-          "د کندز آمو د غاښونو کلینیک په پاک او هوسا چاپېریال کې عصري ترمیمي، ښکلايي او کورنۍ د غاښونو خدمات وړاندې کوي.",
+          "د کندز د شريفي د غاښونو کلینیک په پاک او هوسا چاپېریال کې عصري ترمیمي، ښکلايي او کورنۍ د غاښونو خدمات وړاندې کوي.",
       },
       {
         image: chairImage,
         title: "د ماشومانو او لویانو لپاره د موسکا عصري پاملرنه",
         subtitle:
-          "د ډاکټر محمدالله شریفي تر مشرۍ لاندې، آمو کلینیک پر باوري درملنې، ښکلايي پایلو او د ناروغ په ښي پاملرنې تمرکز کوي.",
+          "د ډاکټر محمدالله شریفي تر مشرۍ لاندې، د شريفي کلینیک پر باوري درملنې، ښکلايي پایلو او د ناروغ په ښي پاملرنې تمرکز کوي.",
       },
       {
         image: upperJawImage,
@@ -799,7 +799,7 @@ export const translations = {
     ],
 
     cardInfo: {
-      clinicName: "د امو د غاښونو کلینیک",
+      clinicName: "د شريفي د غاښونو کلینیک",
       doctorName: "ډاکټر محمدالله شریفي",
       doctorAltName: "شریفي آقتاش",
       whatsapp: "0744547411",
@@ -819,10 +819,10 @@ export const translations = {
     sections: {
       heroBadge: "په کندز کې مسلکي د غاښونو پاملرنه",
 
-      aboutBadge: "د امو په اړه",
+      aboutBadge: "د کلینیک په اړه",
       aboutTitle: "عصري د غاښونو درملنه چې پر باور، نظافت او آرامۍ ولاړه ده",
       aboutDescription:
-        "د امو د غاښونو کلینیک په کندز کې د ډاکټر محمدالله شریفي تر مشرۍ لاندې فعالیت کوي او پر کیفیت لرونکي درملنې، د ناروغ پر آرامۍ او باوري پاملرنې تمرکز لري.",
+        "شریفي د غاښونو کلینیک، د ډاکټر محمدالله شریفي تر مشرۍ لاندې، په ویاړ سره په کندز، افغانستان کې لوړ معیار، ناروغ-محوره د غاښونو خدمتونه وړاندې کوي، او د عصري درملنې، هوساینې، او ډاډمنو موسکاوو لپاره ژمن دی.",
       leadDentistText:
         "ژمن دی چې له ناروغانو سره د خولې روغتیا په ښه کولو، د موسکا ښکلا بېرته راګرځولو او باوري حللارو په برابرولو کې مرسته وکړي.",
 
@@ -834,12 +834,12 @@ export const translations = {
         "دقیق، عصري او آرامه د غاښونو پاملرنه د پاکو پایلو او ښه ناروغ تجربه سره.",
 
       contactBadge: "اړیکه",
-      contactTitle: "د امو د غاښونو کلینیک ته مراجعه وکړئ یا اړیکه ونیسئ",
+      contactTitle: "د شريفي د غاښونو کلینیک ته مراجعه وکړئ یا اړیکه ونیسئ",
       contactDescription:
         "د کلینیک معلومات دلته کارول شوي، څو وروسته وکولای شئ دقیق نقشه یا برېښنالیک نوي کړئ.",
 
       footerText:
-        "په کندز کې د امو د غاښونو کلینیک لپاره یو مسلکي او باوري ویب‌سایټ، چې وروسته پکې نوبت، دوه ژبې او د ناروغانو نظرونه هم اضافه کېدای شي.",
+        "شریفي د غاښونو کلینیک، د ډاکټر محمدالله شریفي تر مشرۍ لاندې، په ویاړ سره په کندز، افغانستان کې لوړ معیار، ناروغ-محوره د غاښونو خدمتونه وړاندې کوي، او د عصري درملنې، هوساینې، او ډاډمنو موسکاوو لپاره ژمن دی.",
     },
   },
 };
