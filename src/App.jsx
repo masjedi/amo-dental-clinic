@@ -21,61 +21,45 @@ import {
   Languages,
 } from "lucide-react";
 import doctorImage from "./assets/images/doctor-image.png";
+import symbolLogo from "./assets/logo/sharifi_symbol.svg";
 import { translations } from "./translations";
 
 function Logo({
   compact = false,
   light = false,
   darkMode = false,
-  title = "Amoo",
+  title = "Sharifi",
   subtitle = "Dental Clinic",
+  sizeClass = "h-12 w-12",
 }) {
-  const primary = light ? "#ffffff" : darkMode ? "#6fd3c1" : "#1b174c";
-  const accent = darkMode ? "#ffffff" : "#6fd3c1";
-  const soft = light
-    ? "rgba(255,255,255,0.14)"
-    : darkMode
-    ? "rgba(255,255,255,0.08)"
-    : "#eef1ff";
+  const titleClass = light || darkMode ? "text-white" : "text-[#1b174c]";
+  const subtitleClass = light || darkMode
+    ? "text-white/70"
+    : "text-slate-500";
 
   return (
     <div className={`flex items-center gap-3 ${compact ? "" : "min-w-0"}`}>
-      <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(135deg, ${primary} 0%, ${accent} 100%)`,
-          }}
+      <div className={`flex shrink-0 items-center justify-center overflow-hidden ${sizeClass}`}>
+        <img
+          src={symbolLogo}
+          alt=""
+          className="h-full w-full object-contain"
+          draggable="false"
         />
-        <div
-          className="relative flex h-8 w-8 items-center justify-center rounded-xl text-sm font-black"
-          style={{ background: soft, color: light ? "#fff" : primary }}
-        >
-          A
-        </div>
       </div>
 
       {!compact && (
         <div className="min-w-0">
           <p
-            className={`truncate text-lg font-extrabold tracking-[0.18em] ${
-              title === "Amoo" ? "uppercase" : ""
-            }`}
-            style={{ color: primary }}
+            className={`truncate text-lg font-extrabold tracking-[0.18em] uppercase ${titleClass}`}
           >
             {title}
           </p>
-          <p
-            className={`truncate text-xs ${
-              light
-                ? "text-white/75"
-                : darkMode
-                ? "text-white/60"
-                : "text-slate-500"
-            }`}
-          >
-            {subtitle}
-          </p>
+          {subtitle ? (
+            <p className={`truncate text-xs ${subtitleClass}`}>
+              {subtitle}
+            </p>
+          ) : null}
         </div>
       )}
     </div>
@@ -152,6 +136,7 @@ export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [serviceIndex, setServiceIndex] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = window.localStorage.getItem("theme");
     return savedTheme === "dark";
@@ -204,10 +189,44 @@ export default function App() {
   }, [language, t.meta.code, t.meta.dir]);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setCurrentSlide(0);
-    setServiceIndex(0);
-  }, [language]);
+    const sectionIds = navLinks
+      .map((link) => link.href.replace("#", ""))
+      .filter(Boolean);
+
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) return undefined;
+
+    const updateActiveSection = () => {
+      let nextActive = sections[0].id;
+      const probeY = window.innerHeight * 0.45;
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= probeY && rect.bottom > probeY) {
+          nextActive = section.id;
+          break;
+        }
+
+        if (rect.top <= probeY) {
+          nextActive = section.id;
+        }
+      }
+
+      setActiveSection(nextActive);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [navLinks]);
 
   const activeSlide = useMemo(
     () => slides[currentSlide],
@@ -232,6 +251,17 @@ export default function App() {
 
   const serviceCountLabel = String(services.length).padStart(2, "0");
   const activeServiceLabel = String(serviceIndex + 1).padStart(2, "0");
+  const handleNavClick = (sectionId) => {
+    setActiveSection(sectionId);
+    setMobileOpen(false);
+  };
+
+  const changeLanguage = (nextLanguage) => {
+    setLanguage(nextLanguage);
+    setMobileOpen(false);
+    setCurrentSlide(0);
+    setServiceIndex(0);
+  };
 
   const goPrev = () =>
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -271,6 +301,7 @@ export default function App() {
               darkMode={darkMode}
               title={t.logo.title}
               subtitle={t.logo.subtitle}
+              sizeClass="h-14 w-14"
             />
           </a>
 
@@ -279,7 +310,15 @@ export default function App() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-slate-600 transition hover:text-[#1b174c] dark:text-slate-300 dark:hover:text-[#6fd3c1]"
+                onClick={() => handleNavClick(link.href.slice(1))}
+                aria-current={
+                  activeSection === link.href.slice(1) ? "page" : undefined
+                }
+                className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
+                  activeSection === link.href.slice(1)
+                    ? "scale-[1.02] bg-[#1b174c] text-white shadow-lg shadow-[#1b174c]/20 ring-2 ring-[#6fd3c1]/50 dark:bg-[#6fd3c1] dark:text-[#0e0d26] dark:ring-[#6fd3c1]/70"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-[#1b174c] dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-[#6fd3c1]"
+                }`}
               >
                 {link.name}
               </a>
@@ -289,7 +328,7 @@ export default function App() {
           <div className="hidden items-center gap-3 md:flex">
             <div className="inline-flex items-center rounded-full border border-slate-200 bg-white p-1 dark:border-white/10 dark:bg-white/5">
               <button
-                onClick={() => setLanguage("en")}
+                onClick={() => changeLanguage("en")}
                 className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
                   language === "en"
                     ? "bg-[#1b174c] text-white dark:bg-[#6fd3c1] dark:text-[#0e0d26]"
@@ -301,7 +340,7 @@ export default function App() {
               </button>
 
               <button
-                onClick={() => setLanguage("fa")}
+                onClick={() => changeLanguage("fa")}
                 className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
                   language === "fa"
                     ? "bg-[#1b174c] text-white dark:bg-[#6fd3c1] dark:text-[#0e0d26]"
@@ -313,7 +352,7 @@ export default function App() {
               </button>
 
               <button
-                onClick={() => setLanguage("ps")}
+                onClick={() => changeLanguage("ps")}
                 className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
                   language === "ps"
                     ? "bg-[#1b174c] text-white dark:bg-[#6fd3c1] dark:text-[#0e0d26]"
@@ -362,8 +401,8 @@ export default function App() {
 
             <button
               onClick={() =>
-                setLanguage((prev) =>
-                  prev === "en" ? "fa" : prev === "fa" ? "ps" : "en"
+                changeLanguage(
+                  language === "en" ? "fa" : language === "fa" ? "ps" : "en"
                 )
               }
               className="inline-flex rounded-xl border border-slate-200 p-2 text-slate-700 dark:border-white/10 dark:text-white"
@@ -393,8 +432,15 @@ export default function App() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-xl px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-white/5"
+                  onClick={() => handleNavClick(link.href.slice(1))}
+                  aria-current={
+                    activeSection === link.href.slice(1) ? "page" : undefined
+                  }
+                  className={`rounded-xl px-3 py-3 text-sm font-semibold transition ${
+                    activeSection === link.href.slice(1)
+                      ? "bg-[#1b174c] text-white ring-2 ring-[#6fd3c1]/50 dark:bg-[#6fd3c1] dark:text-[#0e0d26] dark:ring-[#6fd3c1]/70"
+                      : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-white/5"
+                  }`}
                 >
                   {link.name}
                 </a>
@@ -402,7 +448,7 @@ export default function App() {
 
               <div className="mt-2 flex items-center gap-2">
                 <button
-                  onClick={() => setLanguage("en")}
+                  onClick={() => changeLanguage("en")}
                   className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
                     language === "en"
                       ? "bg-[#1b174c] text-white dark:bg-[#6fd3c1] dark:text-[#0e0d26]"
@@ -412,7 +458,7 @@ export default function App() {
                   EN
                 </button>
                 <button
-                  onClick={() => setLanguage("fa")}
+                  onClick={() => changeLanguage("fa")}
                   className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
                     language === "fa"
                       ? "bg-[#1b174c] text-white dark:bg-[#6fd3c1] dark:text-[#0e0d26]"
@@ -422,7 +468,7 @@ export default function App() {
                   دری
                 </button>
                 <button
-                  onClick={() => setLanguage("ps")}
+                  onClick={() => changeLanguage("ps")}
                   className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
                     language === "ps"
                       ? "bg-[#1b174c] text-white dark:bg-[#6fd3c1] dark:text-[#0e0d26]"
@@ -447,7 +493,10 @@ export default function App() {
       </header>
 
       <main>
-        <section id="home" className="relative isolate overflow-hidden">
+        <section
+          id="home"
+          className="relative isolate overflow-hidden scroll-mt-28"
+        >
           <div className="absolute inset-0">
             {slides.map((slide, index) => (
               <div
@@ -584,7 +633,7 @@ export default function App() {
 
         <section
           id="about"
-          className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8"
+          className="mx-auto max-w-7xl scroll-mt-28 px-4 py-20 sm:px-6 sm:py-24 lg:px-8"
         >
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div className="relative order-2 lg:order-1">
@@ -665,7 +714,7 @@ export default function App() {
 
         <section
           id="services"
-          className="relative isolate overflow-hidden py-14 sm:py-16"
+          className="relative isolate scroll-mt-28 overflow-hidden py-14 sm:py-16"
         >
           <div className="absolute inset-0 bg-white dark:bg-[#090914]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(111,211,193,0.18),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(27,23,76,0.10),transparent_26%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(111,211,193,0.12),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(27,23,76,0.46),transparent_32%)]" />
@@ -934,7 +983,7 @@ export default function App() {
 
         <section
           id="contact"
-          className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8"
+          className="mx-auto max-w-7xl scroll-mt-28 px-4 py-20 sm:px-6 sm:py-24 lg:px-8"
         >
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <div className="rounded-[2rem] border border-slate-200 bg-white p-6 text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-[#131233] dark:text-white dark:shadow-none sm:p-8">
@@ -1036,7 +1085,7 @@ export default function App() {
               </div>
               <iframe
                 title={t.ui.locationMap}
-                src="https://maps.google.com/maps?q=36.7283707,68.8664703&z=17&output=embed"
+                src="https://www.google.com/maps?q=36.7283832,68.867589&z=17&output=embed"
                 className="h-[340px] w-full rounded-b-[2rem] sm:h-[460px]"
                 style={{ border: 0 }}
                 loading="lazy"
@@ -1055,6 +1104,7 @@ export default function App() {
               darkMode={darkMode}
               title={t.logo.title}
               subtitle={t.logo.subtitle}
+              sizeClass="h-16 w-16"
             />
             <p className="mt-6 max-w-md text-sm leading-7 text-slate-600 dark:text-white/70">
               {t.sections.footerText}

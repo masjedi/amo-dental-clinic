@@ -1,11 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' data: https:;
+    connect-src 'self' https: ws: wss:;
+    frame-src 'self' https://www.google.com;
+    base-uri 'self';
+    form-action 'self';
+    object-src 'none';
+  "
+    />
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="./src/assets/logo/sharifi_symbol_1024.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="./src/assets/logo/sharifi_symbol_1024.png"
+    />
+
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>amo-dental-clinic</title>
+
+    <!-- Basic SEO (Multilingual) -->
+    <title>
+      Sharifi Dental Clinic | کلینیک دندان شریفی | د شریفي غاښونو کلینیک
+    </title>
+
+    <meta
+      name="description"
+      content="Sharifi Dental Clinic offers professional dental services in Kunduz. کلینیک دندان شریفی ارائه دهنده خدمات حرفه‌ای دندانپزشکی در کندز. د شریفي غاښونو کلینیک په کندز کې د غاښونو مسلکي خدمات وړاندې کوي."
+    />
+
+    <meta
+      name="keywords"
+      content="dental clinic, dentist Kunduz, Sharifi clinic, کلینیک دندان کندز, د غاښونو کلینیک کندز, dentist Afghanistan"
+    />
+
+    <meta name="author" content="Sharifi Dental Clinic" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (Multilingual) -->
+    <meta
+      property="og:title"
+      content="Sharifi Dental Clinic داکتر محمد الله شریفي د غاښونو ډاکټر په کندز، کندوز کي| داکتر محمدالله شریفي داکتر مسلکي دندان | کلینیک دندان شریفی | د شریفي غاښونو کلینیک"
+    />
+    <meta
+      property="og:description"
+      content="Professional dental care services | خدمات دندانپزشکی حرفه‌ای | د غاښونو مسلکي خدمات"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sharifidental.com" />
+    <meta property="og:image" content="./src/assets/logo/logo.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Sharifi Dental Clinic | کلینیک دندان شریفی |  شریفي د غاښونو کلینیک"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional dental care | خدمات تداوي دندان | د غاښونو خدمات"
+    />
+    <meta
+      name="twitter:image"
+      content="./src/assets/logo/logo.png"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sharifidental.com" />
+
+    <!-- Structured Data (Multilingual) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "Sharifi Dental Clinic",
+        "alternateName": "کلینیک دندان شریفی |  شریفي د غاښونو کلینیک",
+        "url": "https://sharifidental.com",
+        "logo": "./src/assets/logo/clinic_logo.png",
+        "image": "./src/assets/logo/logo.png",
+        "description": "Professional dental clinic providing high-quality oral care services. کلینیک دندان حرفه‌ای در کندز. د غاښونو مسلکي کلینیک په کندز کې.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kunduz",
+          "addressCountry": "AF"
+        },
+        "telephone": "+93-XXX-XXX-XXX"
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
